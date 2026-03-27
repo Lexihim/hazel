@@ -3,116 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA MODE | Home</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            line-height: 1.4;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            padding: 2rem 4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .main-title {
-            font-size: clamp(4rem, 12vw, 10rem);
-            font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -4px;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-        }
-
-        .spacer {
-            height: 80px;
-        }
-
-        .tagline {
-            font-size: 1.35rem;
-            font-weight: 500;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-top: 4rem;
-            opacity: 0.85;
-            max-width: 800px;
-        }
-
-        footer {
-            padding: 2rem 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            text-align: center;
-            opacity: 0.7;
-        }
-
-        /* Subtle aura glow effect on the main title */
-        .main-title {
-            text-shadow: 
-                0 0 40px rgba(255, 255, 255, 0.3),
-                0 0 80px rgba(200, 150, 255, 0.15);
-        }
-    </style>
+    <title>Hazel AI | Professional Assistant</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo"># AURA MODE</div>
-        <div>| Home</div>
-    </header>
-
-    <main>
-        <div class="main-title"># AURA MODE</div>
+    <div class="chat-container">
+        <header>
+            <div class="logo-area">
+                <div class="hazel-orb"></div>
+                <h2>Hazel <span class="v-tag">v1.0</span></h2>
+            </div>
+            <div class="status">Online</div>
+        </header>
         
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        
-        <div class="main-title"># AURA MODE</div>
-        
-        <div class="tagline">
-            GLOBAL FASHION HOUSE — NEW PIECES ADDED WEEKLY — PARIS SHOWROOM NOW OPEN —
+        <div id="chat-box" class="chat-box">
+            <div class="message hazel-msg">Hello! I'm Hazel. How can I assist your development today?</div>
         </div>
-    </main>
 
-    <footer>
-        AURA MODE © 2026 — ALL RIGHTS RESERVED
-    </footer>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off">
+            <button id="send-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
