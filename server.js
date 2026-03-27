@@ -1,24 +1,30 @@
-// server.js (Node.js/Express)
 const express = require('express');
 const axios = require('axios');
-require('dotenv').config();
+const cors = require('cors');
+require('dotenv').config(); // Load secrets from .env file
 
 const app = express();
+app.use(cors());
 app.use(express.json());
+app.use(express.static('public')); // Serves your HTML/CSS/JS
 
-const HAZEL_API_KEY = process.env.HAZEL_KEY; // Your key: 7bf09ef8...
+const API_KEY = process.env.HAZEL_API_KEY; // Pulled from your GitHub Secrets
 
 app.post('/api/chat', async (req, res) => {
     try {
-        const response = await axios.post('https://api.your-ai-provider.com/v1/chat', {
-            message: req.body.message
+        // This is the call to the AI engine using your specific key
+        const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: req.body.prompt }]
         }, {
-            headers: { 'Authorization': `Bearer ${HAZEL_API_KEY}` }
+            headers: { 'Authorization': `Bearer ${API_KEY}` }
         });
-        res.json({ reply: response.data.choices[0].text });
-    } catch (error) {
-        res.status(500).send("Hazel is resting. Try again shortly.");
+
+        res.json({ reply: response.data.choices[0].message.content });
+    } catch (err) {
+        res.status(500).json({ error: "Hazel Connection Failed" });
     }
 });
 
-app.listen(3000, () => console.log('Hazel Backend is Live on Port 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Hazel Core running on port ${PORT}`));
