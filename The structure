@@ -1,0 +1,20 @@
+/hazel-ai
+│
+├── /src                 # The Source (The "Brain" resides here)
+│   ├── /controllers     # Logic: Decision-making algorithms
+│   │   └── chatController.js
+│   ├── /routes          # Traffic: Directs requests to the right logic
+│   │   └── api.js
+│   └── /middleware      # Security: Filters out bad requests/keys
+│       └── auth.js
+│
+├── /public              # The "Skin" (Static Frontend)
+│   ├── /assets          # Images, Icons, logo.svg
+│   ├── index.html
+│   ├── style.css
+│   └── app.js           # Client-side UI logic
+│
+├── .env                 # The "Vault" (Your API Key - HIDDEN)
+├── .gitignore           # The "Filter" (Prevents secrets from going to GitHub)
+├── package.json         # The "Blueprint" (Metadata and Dependencies)
+└── server.js            # The "Heart" (Entry point of the application)
