@@ -1,0 +1,9 @@
+# Ignore the Secret Vault
+.env
+
+# Ignore the massive folder of downloaded tools
+node_modules/
+
+# Ignore OS-specific system files
+.DS_Store
+Thumbs.db
