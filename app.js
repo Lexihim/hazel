@@ -1,25 +1,16 @@
-// Replace this URL with the one Render gives you after you deploy
-const HZ_BACKEND_URL = "https://your-hazel-app.onrender.com/api/chat";
+function renderHazelResponse(text, containerId) {
+    const container = document.getElementById(containerId);
+    let i = 0;
+    container.innerHTML = ""; // Clear loader
 
-async function handleHazelChat() {
-    const message = userInput.value.trim();
-    if (!message) return;
-
-    appendMessage('user', message);
-    userInput.value = '';
-
-    try {
-        // We now fetch from the REAL live server, not a local file
-        const response = await fetch(HZ_BACKEND_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: message })
-        });
-
-        const data = await response.json();
-        appendMessage('hazel', data.reply);
-    } catch (error) {
-        console.error("Hazel Connection Error:", error);
-        appendMessage('hazel', "I'm having trouble connecting to my server.");
+    // Professional Typewriter Algorithm
+    function type() {
+        if (i < text.length) {
+            container.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 15); // Adjust speed for that "Pro" feel
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
     }
+    type();
 }
